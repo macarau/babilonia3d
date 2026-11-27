@@ -1,26 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta http-equiv='X-UA-Compatible' content='chrome=1'></meta>
-<meta http-equiv='Content-Type' content='text/html;charset=utf-8'></meta>
-<title>Mapa Babilónico del Mundo</title>
-<script type='text/javascript' src='https://www.x3dom.org/download/x3dom.js'> </script>
-<link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/x3dom.css'/>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Babilonia3D · Mapa Babilónico del Mundo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Sans+Cuneiform&display=swap" rel="stylesheet">
+<script src="https://www.x3dom.org/download/x3dom.js"></script>
+<link rel="stylesheet" href="https://www.x3dom.org/download/x3dom.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Tablilla del Mapa Babilónico del Mundo</h1>
-<p>
-    El objeto es una tablilla de arcilla datada entre los siglos IX y VII a.C. Esta tablilla, de 12,8 cm de alto y 8,2 cm de ancho, presenta una representación esquemática del mundo conocido en ese momento, centrada en el río Éufrates. En ella se visualizan varias ciudades y regiones, como Babilonia, Susa y Urartu. Además, el mapa incluye una breve descripción textual y muestra entre siete y ocho regiones extranjeras más allá de un "río amargo" circular u océano.
-</p>
-<x3d width='800px' height='800px'>
-<scene>
-<Viewpoint position="17.68683 53.06049 165.24897" orientation="0.00000 0.00000 0.00000 0.00000" 
-	centerOfRotation="0.00000 0.00000 0.00000" fieldOfView="0.78540" description="defaultX3DViewpointNode"></Viewpoint>
-<inline url="https://raw.githubusercontent.com/macaraucat/babilonia3d/refs/heads/main/babi15k.x3d"> </inline>
-</scene>
-</x3d>
-<p>
-    Modelo 3D basado en una nube de puntos con color por vértice, modelo original de 1,651,862 vértices.
-</p>
-  </body>
+
+<header>
+  <div>
+    <h1>Babilonia3D</h1>
+    <p class="sub">Repositorio digital patrimonial · Mapa Babilónico del Mundo</p>
+  </div>
+  <nav>
+    <a href="#modelo">Modelo</a>
+    <a href="#datos">Datos</a>
+    <a href="https://github.com/macarau/babilonia3d">Código</a>
+  </nav>
+</header>
+
+<main class="escena" id="modelo">
+  <x3d id="x3d" showStat="false" showLog="false">
+    <scene>
+      <navigationInfo id="nav" type='"examine" "any"' headlight="true"></navigationInfo>
+      <background skyColor="0.82 0.67 0.47" transparency="1"></background>
+      <viewpoint position="17.68683 53.06049 165.24897" orientation="0 0 1 0"
+        centerOfRotation="0 0 0" fieldOfView="0.78540" description="Vista frontal"></viewpoint>
+      <transform id="tablilla">
+        <inline id="inl" url="https://raw.githubusercontent.com/macarau/babilonia3d/refs/heads/main/babi15k.x3d"></inline>
+      </transform>
+    </scene>
+  </x3d>
+
+  <section class="panel controles" aria-label="Controles 3D">
+    <h2>Controles 3D</h2>
+    <button class="ctl" id="bRotar" aria-pressed="true" style="margin-bottom:12px">Rotar <i class="sw"></i></button>
+    <div class="zoom">
+      <span>Zoom</span>
+      <input type="range" id="zoom" min="0.5" max="3" step="0.05" value="1" aria-label="Zoom">
+      <button class="btn" id="zMenos" aria-label="Alejar">−</button>
+      <button class="btn" id="zMas" aria-label="Acercar">+</button>
+    </div>
+    <button class="ctl" id="bMalla" aria-pressed="false" style="margin-bottom:12px">Malla / puntos <i class="sw"></i></button>
+    <div class="dos">
+      <button class="btn" id="bLuz">Iluminación</button>
+      <button class="btn" id="bReset">Restablecer</button>
+    </div>
+    <div class="dos" style="margin-top:10px">
+      <button class="btn" id="bFull" style="grid-column:1/-1">Pantalla completa</button>
+    </div>
+    <p class="modo">Nube de puntos con color por vértice</p>
+  </section>
+
+  <aside class="panel datos" id="datos" aria-label="Datos del artefacto">
+    <h2>Datos del artefacto</h2>
+    <dl>
+      <dt>Nombre</dt><dd>Imago Mundi<br>Mapa Babilónico del Mundo</dd>
+      <dt>Datación</dt><dd>Siglos IX–VII a.C.</dd>
+      <dt>Material</dt><dd>Arcilla</dd>
+      <dt>Escritura</dt><dd>Acadio cuneiforme</dd>
+      <dt>Medidas</dt><dd>12,8 × 8,2 cm</dd>
+      <dt>Hallado</dt><dd>Sippar, Mesopotamia</dd>
+      <dt>Institución</dt><dd>British Museum · BM 92687</dd>
+      <dt>Modelo</dt><dd>1.651.862 vértices (original); versión web simplificada</dd>
+    </dl>
+    <div class="desc">
+      <h2>Descripción</h2>
+      <p>Representación esquemática del mundo conocido, centrada en el río Éufrates. Muestra ciudades y regiones como Babilonia, Susa y Urartu, y entre siete y ocho regiones extranjeras más allá de un «río amargo» circular u océano.</p>
+    </div>
+    <a class="acc p" href="#modelo">Ver en 3D</a>
+    <a class="acc" href="https://raw.githubusercontent.com/macarau/babilonia3d/refs/heads/main/babi15k.x3d">Descargar modelo (.x3d)</a>
+    <a class="acc" href="https://www.britishmuseum.org/collection/object/W_1882-0714-509" rel="noopener">Información histórica</a>
+  </aside>
+</main>
+
+<footer>
+  <span>Modelo 3D · Dominio público (CC0 1.0)</span>
+  <span>Arrastra para girar · rueda o pellizco para acercar · <a href="https://github.com/macarau/babilonia3d">Código en GitHub</a></span>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>

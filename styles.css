@@ -1,0 +1,74 @@
+:root{
+  --noche:#17130e; --carbon:#241d16; --arcilla:#4a2c1f; --arena:#d9bc8c;
+  --arena-clara:#ecd9b4; --oro:#e6c27a; --oro-osc:#c9a24f; --texto:#f3e8d3; --tenue:#b9a98c;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--noche);color:var(--texto);font:400 15px/1.55 Inter,system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+
+header,footer{background:var(--noche);padding:20px clamp(16px,5vw,90px)}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px}
+h1{margin:0;font:600 clamp(34px,5vw,56px)/1 "Cormorant Garamond",Georgia,serif;color:var(--arena-clara);letter-spacing:.01em}
+.sub{margin:6px 0 0;color:var(--oro);font-size:14px}
+nav{display:flex;gap:28px;font-size:15px}
+nav a{text-decoration:none;color:var(--oro)}
+nav a:hover{text-decoration:underline;text-underline-offset:5px}
+
+/* Escenario */
+.escena{position:relative;height:min(82vh,780px);min-height:560px;overflow:hidden;
+  background:
+   radial-gradient(ellipse at 50% 45%,#f0dfba 0%,#d9bc8c 55%,#b8946a 100%)}
+.escena::before{content:"𒀭𒆠𒌷𒀀𒈾𒁀𒄩𒀝𒆗𒋫𒊕𒀊𒌓𒂍𒄑𒇻𒁹𒉿𒅗𒀭𒆠𒌷𒀀𒈾𒁀𒄩𒀝𒆗𒋫𒊕𒀊𒌓𒂍𒄑𒇻𒁹𒉿𒅗𒀭𒆠𒌷𒀀𒈾𒁀𒄩𒀝𒆗𒋫𒊕𒀊";
+  position:absolute;inset:0 0 auto 0;padding:14px 20px;font:44px/1.25 "Noto Sans Cuneiform",serif;
+  color:#7a5a36;opacity:.22;letter-spacing:.35em;word-break:break-all;max-height:150px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent);pointer-events:none}
+x3d{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent}
+x3d canvas{outline:none}
+
+.panel{position:absolute;z-index:2;border-radius:14px;box-shadow:0 18px 40px rgba(30,15,5,.38)}
+.panel h2{margin:0 0 14px;font:600 16px/1.2 Inter,sans-serif;letter-spacing:.02em;color:var(--oro)}
+
+/* Controles */
+.controles{left:clamp(12px,4vw,80px);top:50%;transform:translateY(-35%);width:310px;padding:20px;background:rgba(28,22,16,.92)}
+.controles h2{text-align:center}
+.fila{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.btn,.ctl{font:500 15px Inter,sans-serif;color:var(--texto);background:#2e261d;border:1px solid #433729;border-radius:9px;padding:10px 12px;cursor:pointer}
+.ctl{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left}
+.ctl:hover,.btn:hover{border-color:var(--oro-osc)}
+.sw{width:46px;height:26px;border-radius:13px;background:#5a4a33;position:relative;flex:none;transition:background .2s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff3d6;transition:transform .2s}
+.ctl[aria-pressed="true"] .sw{background:var(--oro-osc)}
+.ctl[aria-pressed="true"] .sw::after{transform:translateX(20px)}
+.zoom{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+.zoom span{flex:none;width:44px}
+.zoom input{flex:1;accent-color:var(--oro)}
+.zoom .btn{width:30px;height:30px;padding:0;border-radius:50%;line-height:1}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dos .btn{padding:10px 6px;text-align:center}
+.modo{margin:14px 0 0;font-size:13px;color:var(--tenue)}
+
+/* Datos */
+.datos{right:clamp(12px,4vw,80px);top:50%;transform:translateY(-50%);width:380px;max-width:calc(100% - 24px);padding:24px;background:rgba(62,36,25,.95)}
+.datos h2{font-size:19px}
+dl{display:grid;grid-template-columns:92px 1fr;gap:9px 14px;margin:0 0 18px}
+dt{color:#d8c7a6;font-size:14px}
+dd{margin:0;font-weight:500;font-size:14px}
+.desc{border-top:1px solid #7a5a45;padding-top:16px}
+.desc p{margin:0 0 18px;font-size:14px;line-height:1.6}
+.acc{display:block;text-align:center;text-decoration:none;font-weight:600;padding:12px;border-radius:9px;margin-top:10px;border:1px solid var(--oro-osc);font-size:15px}
+.acc.p{background:var(--oro);color:#2b1c0d;border-color:var(--oro)}
+.acc.p:hover{background:#f0d08e}
+.acc:not(.p):hover{background:rgba(230,194,122,.12)}
+
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:14px;color:var(--arena-clara)}
+footer a{color:var(--oro)}
+
+@media (max-width:1100px){
+  .escena{height:auto;min-height:0;display:flex;flex-direction:column}
+  x3d{position:relative;height:62vh;min-height:380px}
+  .panel{position:static;transform:none;width:auto;margin:12px;max-width:none}
+  .controles{order:2}.datos{order:3}
+}
+@media (prefers-reduced-motion:reduce){.sw,.sw::after{transition:none}}
